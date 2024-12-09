@@ -1,0 +1,102 @@
+*{
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    font-family: "Prompt", serif;
+}
+
+.oc-mob-login-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #1b1d22;
+    overflow: hidden;
+}
+
+.oc-mob-login-header{
+    position: absolute;
+    top: 20%;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.oc-mob-login-header h2{
+    font-size: 2rem;
+    font-weight: 650;
+}
+
+.oc-mob-login-header span{
+    font-size: 0.9rem;
+    font-weight: 550;
+    text-align: center;
+}
+
+.oc-mob-login-form{
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0);
+}
+
+.oc-mob-login-input-group{
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #FFFFFF;
+}
+
+.oc-mob-login-input-group input{
+    width: 100%;
+    padding: 15px;
+    color: #1b1d22;
+    font-size: 14px;
+    border: 1px solid #1b1d22;
+    outline: 1px solid #1b1d22;
+    border: 2px;
+}
+
+.oc-mob-login-btn-group{
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oc-mob-login-btn{
+    width: 60%;
+    height: 45px;
+    background-color: #22aa00;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+.oc-mob-login-divider{
+    width: 100%;
+    min-width: 320px;
+    margin-bottom: 1rem;
+
+}
+
+.oc-mob-support-btn{
+    width: 70%;
+    height: 50px;
+    background-color: #FFBF00;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+
+}

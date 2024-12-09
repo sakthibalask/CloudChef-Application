@@ -1,0 +1,326 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.oc-mob-createorder-view{
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.oc-mob-createorder-view-header{
+    width: 100%;
+    height: 60px;
+    margin-bottom: 1.1rem;
+    background-color: #1b1d22;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+
+.oc-mob-createorder-view-form-container{
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.oc-mob-createorder-view-form-header{
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 550;
+    text-align: center;
+}
+
+.oc-mob-createorder-view-form-tabs{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: #1b1d22;
+    gap: 2rem;
+    margin-bottom: 1.1rem;
+    border-radius: 20px;
+}
+
+.oc-mob-createorder-view-form-tab{
+    width: 100px;
+    height: 40px;
+    color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oc-mob-createorder-view-form-tab.active-tab{
+    background-color: #FFBF00;
+    color: #ffffff;
+}
+
+.oc-mob-createorder-view-form{
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+}
+
+.oc-mob-createorder-view-form-input-grp{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 1.5rem;
+    background-color: #ffffff;
+    border: 1px solid lightgray;
+}
+
+.oc-mob-createorder-view-form-input-grp input{
+    width: 100%;
+    height: 50px;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    pointer-events: none;
+}
+
+.oc-mob-createorder-view-form-btn-grp{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 1rem;
+    
+}
+
+.oc-mob-createorder-view-form-btn-grp button{
+    width: 100%;
+    height: 50px;
+    background-color: #1b1d22;
+    color: #ffffff;
+    padding: 0.7rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.oc-mob-createorder-view-form-btn-grp button span{
+    font-size: 1rem;
+}
+
+.oc-mob-createorder-view-form-btn-grp button span i{
+    font-size: 1rem;
+}
+
+.oc-mob-createorder-view-overlay{
+    position: fixed;
+    bottom: 0; 
+    left: 0;
+    z-index: 1000;
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%); 
+    transition: 1s ease-out; 
+}
+
+.oc-mob-createorder-view-overlay.is-open{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); 
+    background-color: #ffffff;
+    box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.7);
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+}
+
+
+/* Tables */
+
+.oc-mob-tables-view{
+    width: 100%;
+    height: auto;
+}
+
+.oc-mob-overlay-view-header{
+    width: 100%;
+    height: 60px;
+    background-color: #1b1d22;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.oc-mob-overlay-view-header span#close-overlay{
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    color: #1b1d22;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.oc-mob-tables-view-container{
+    width: 100%;
+    height: auto;
+    /* padding: 1rem; */
+}
+
+.oc-mob-tables-view-container-floorchips{
+    display: grid;
+    width: 100%;
+    height: auto;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.oc-mob-tables-view-container-floorchip{
+    width: 120px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #1b1d22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 16px;
+    border: 1px solid lightgray;
+}
+
+.oc-mob-tables-view-container-floorchip.active-chip{
+    background-color: #1b1d22;
+    color: #ffffff;
+}
+
+.oc-mob-tables-view-container-table-formation{
+    width: 100%;
+    height: auto;
+    padding: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.oc-mob-tables-view-container-table{
+    width: 100%;
+}
+
+.oc-mob-tables-view-4mtable{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #1b1d22;
+    border-radius: 50%;
+    background-image: url('./impl/assests/table.png');
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oc-mob-tables-view-4mtable.is-selected{
+    background-color: lightgray;
+    color: #1b1d22;
+    background-blend-mode: multiply;
+    border: 5px solid #1b1d22;
+}
+
+.oc-mob-tables-view-6mtable{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #1b1d22;
+    border-radius: 50%;
+    background-image: url('./impl/assests/familytable.png');
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oc-mob-tables-view-6mtable.is-selected{
+    background-color: lightgray;
+    color: #1b1d22;
+    background-blend-mode: multiply;
+    border: 5px solid #1b1d22;
+}
+
+.oc-mob-tables-view-pmtable{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #1b1d22;
+    border-radius: 50%;
+    background-image: url('./impl/assests/partytable.png');
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oc-mob-tables-view-pmtable.is-selected{
+    background-color: lightgray;
+    color: #1b1d22;
+    background-blend-mode: multiply;
+    border: 5px solid #1b1d22;
+}
+
+
+.oc-mob-tables-view-btn{
+    width: 100%;
+    padding: 1rem;
+}
+
+.oc-mob-tables-view-btn button{
+    width: 100%;
+    height: 50px;
+    background-color: #1b1d22;
+    border-radius: 20px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 650;
+}
+
+.is-frozen
+{
+    background-color: #ffcccc;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+
+/* View Menu */
+
+
+/* Order Summary */
