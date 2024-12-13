@@ -19,7 +19,7 @@ function initializeMenuPage() {
             category: "Breakfast"
         },
         {
-            name: "South Indian Biryani",
+            name: "South Indian Chicken Biryani",
             type: "Non-Veg",
             status: "Available in 30 mins",
             statusClass: "ready",

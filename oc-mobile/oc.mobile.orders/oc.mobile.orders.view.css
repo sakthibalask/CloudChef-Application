@@ -180,6 +180,8 @@
     padding: 1rem;
     background-color: #1b1d22;
     color: #ffffff;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
 }
 
 .oc-mob-orders-view-overlay-header>span#close-orderoverlay{

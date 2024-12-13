@@ -1,0 +1,194 @@
+.oc-mob-checkout-view{
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.oc-mob-checkout-view-header{
+    width: 100%;
+    height: 40px;
+    background-color: #1b1d22;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    margin-bottom: 1.1rem;
+}
+
+.oc-mob-checkout-view-container{
+    padding: 1rem;
+}
+
+.oc-mob-checkout-view-container-title{
+    font-size: 1.2rem;
+    font-weight: 550;
+}
+
+.oc-mob-checkout-view-container-orders{
+    width: 100%;
+    height: auto;
+    margin-top: 1rem;
+}
+
+.oc-mob-checkout-view-container-orders-list{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.oc-mob-checkout-view-container-order{
+    width: 90%;
+    height: 40px;
+    background-color: #1b1d22;
+    color: #ffffff;
+    border-radius: 25px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.oc-mob-checkout-view-container-order-context-data.status-checkout{
+    width: max-content;
+    height: 20px;
+    background-color: #FFBF00;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 30px;
+}
+.oc-mob-checkout-view-container-order-context-data.status-done{
+    width: max-content;
+    height: 20px;
+    background-color: #245af9;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 30px;
+}
+
+.oc-mob-checkout-view-overlay{
+    position: fixed;
+    bottom: 0; 
+    left: 0;
+    z-index: 1000;
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%); 
+    transition: 1s ease-out; 
+}
+
+.oc-mob-checkout-view-overlay.is-open{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); 
+    background-color: #ffffff;
+    box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.7);
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+}
+
+
+/* Checkout Form */
+
+.oc-mob-checkout-overlay{
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+}
+
+.oc-mob-checkout-overlay-header{
+    width: 92%;
+    height: 40px;
+    background-color: #1b1d22;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+}
+
+.oc-mob-checkout-overlay-title{
+    font-size: 1.1rem;
+    font-weight: 550;
+}
+
+.oc-mob-checkout-overlay-header span{
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    color: #1b1d22;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.oc-mob-checkout-overlay-container{
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    /* padding: 1rem; */
+}
+
+.oc-mob-checkout-overlay-container-lists{
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.oc-mob-checkout-overlay-container-list{
+    width: 90%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: hidden;
+    
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+}
+
+.oc-mob-checkout-overlay-list-item{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.3rem;
+}
+
+.oc-mob-checkout-overlay-container-orderDetails{
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.oc-mob-checkout-overlay-container-orderDetails button{
+    width: 100%;
+    height: 50px;
+    background-color: #1b1d22;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 1rem;
+}

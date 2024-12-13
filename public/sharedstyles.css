@@ -12,6 +12,10 @@
     font-family: "Prompt", serif;
 }
 
+.oc-mob-display-hidden{
+    display: none;     
+}
+
 .oc-mob-navigation{
     position: fixed;
     bottom: 1.5rem;
