@@ -53,6 +53,9 @@ async function loadContent(targetId, container) {
         cleanupPageResources();
 
         // Fetch the content
+        const currentUrl = new URL(window.location.href);
+        currentUrl.hash = `#${targetId}`;
+        window.history.pushState({ targetId }, '', currentUrl.toString());
         const response = await fetch(`./oc.mobile.${targetId}/oc.mobile.${targetId}.view.html`);
         if (!response.ok) {
             throw new Error(`Could not load ${targetId}.html`);
@@ -62,8 +65,20 @@ async function loadContent(targetId, container) {
         container.innerHTML = html;
         loadCSS(`./oc.mobile.${targetId}/oc.mobile.${targetId}.view.css`);
         await loadJS(`./oc.mobile.${targetId}/oc.mobile.${targetId}.view.js`);
-    } catch (error) {
-        throw error;
+    } catch (err) {
+        const mainContent = document.querySelector('.oc-mob-page-area');
+        const navigationContainer = document.querySelector('.oc-mob-navigation');
+        const currentUrl = new URL(window.location.href);
+        const targetId = "error";
+        currentUrl.hash = `#${targetId}`;
+        window.history.pushState({ targetId }, '', currentUrl.toString());
+        const errorResponse = await fetch('../public/oc-notfound.screen.html');
+        const errorScreen = await errorResponse.text();
+
+        mainContent.innerHTML = errorScreen;
+        navigationContainer.style.display = "none";
+
+
     }
 }
 
@@ -134,7 +149,13 @@ function continueInitialPageLoad(mainContent) {
 
         // Extract and clean the targetId (removes query params if any)
         let targetId = currentUrl.hash.substring(1).split('?')[0]; // Remove query parameters if any
-        targetId = targetId || 'menu'; // Default to 'menu' if no hash or invalid targetId
+        if(targetId !== "error"){
+            targetId = targetId  || 'menu';
+        }else{
+            targetId = 'menu';
+        }
+         // Default to 'menu' if no hash or invalid targetId
+
 
         loadContent(targetId, mainContent).catch(error => {
             handleError(error, mainContent);

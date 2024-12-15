@@ -1,0 +1,26 @@
+<div class="oc-desk-orderitem-overlay-view">
+    <div class="oc-desk-orderitem-overlay-view-header">
+        <div>
+            <span class="oc-desk-orderitem-overlay-view-header-title">Order Number : {{orderId}}</span>
+            <span class="oc-desk-orderitem-overlay-view-header-status status-{{orderStatus}}">{{orderMessage}}</span>
+        </div>
+        <span id="close-overlay"><i class="ri-close-line"></i></span>
+    </div>
+    <hr>
+    <div class="oc-desk-orderitem-overlay-view-container">
+        <div class="oc-desk-orderitem-overlay-view-container-header">
+            <span class="oc-desk-orderitem-overlay-view-container-header-staff">Staff Id : {{staffId}}</span>
+            <span class="oc-desk-orderitem-overlay-view-container-header-table">{{orderTable}}</span>
+            <span class="oc-desk-orderitem-overlay-view-container-header-type">{{orderType}}</span>
+        </div>
+        <hr>
+        <div class="oc-desk-orderitem-overlay-view-container-main">
+            <ul class="oc-desk-orderitem-overlay-view-container-items-lists"></ul>
+            <div class="oc-desk-orderitem-overlay-view-container-main-btns">
+                <button class="oc-desk-orderitem-overlay-view-container-main-btn" id="ready-to-serve">Ready to Serve</button>
+            </div>
+        </div>
+        
+
+    </div>
+</div>

@@ -205,7 +205,7 @@ function initializeMenuPage() {
                 }
 
             } catch (error) {
-                console.error('Error fetching filter options:', error);
+
             }
         }
     }
