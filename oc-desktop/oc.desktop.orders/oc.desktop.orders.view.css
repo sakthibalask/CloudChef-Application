@@ -63,11 +63,24 @@
     cursor: pointer;
 }
 
+.oc-desk-orders-view-container-header-chips span:last-child{
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   gap: 0.5rem;
+}
+
 .oc-desk-orders-view-container-header-chips span:hover,
 .oc-desk-orders-view-container-header-chips span.active-chips{
     background-color: #FFBF00;
     color: #ffffff;
     border: none;
+}
+
+.oc-desk-orders-view-container-header-chips span:last-child.active-chips{
+    background-color: #1b1d22;
+    border: 1px solid #ccc;
+    color: #ffffff;
 }
 
 .oc-desk-orders-view-container-header-actions{
@@ -249,7 +262,7 @@
     z-index: 100;
     max-width: 500px;
     width: 100%;
-    height: 90%;
+    height: auto;
     background-color: #ffffff;
     opacity: 0;
     visibility: hidden;

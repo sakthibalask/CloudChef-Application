@@ -181,6 +181,7 @@ async function loadLoginPage() {
 
         const loginJSLink = document.createElement('script');
         loginJSLink.src = '../public/oc-authentication/oc-authentication.view.js';
+        loginJSLink.setAttribute('type', 'module'); 
         document.body.appendChild(loginJSLink);
     }, 2000); // Show loading screen for 2 seconds on login
 }

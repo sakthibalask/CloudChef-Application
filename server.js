@@ -12,6 +12,7 @@ function isMobile(userAgent) {
 // Serve static files for desktop and mobile views
 app.use('/oc-desktop', express.static(path.join(__dirname, 'oc-desktop')));
 app.use('/oc-mobile', express.static(path.join(__dirname, 'oc-mobile')));
+app.use('/node_modules', express.static('node_modules'));
 
 // Serve static files from the 'public' directory
 app.use('/public', express.static(path.join(__dirname, 'public')));

@@ -42,10 +42,10 @@
 
 .oc-mob-checkout-view-container-order{
     width: 90%;
-    height: 40px;
+    height: 60px;
     background-color: #1b1d22;
     color: #ffffff;
-    border-radius: 25px;
+    border-radius: 10px;
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    border-radius: 30px;
+    border-radius: 10px;
 }
 .oc-mob-checkout-view-container-order-context-data.status-done{
     width: max-content;
@@ -110,8 +110,8 @@
 }
 
 .oc-mob-checkout-overlay-header{
-    width: 92%;
-    height: 40px;
+    width: 100%;
+    height: 60px;
     background-color: #1b1d22;
     color: #ffffff;
     display: flex;
@@ -120,6 +120,7 @@
     padding: 1rem;
     border-top-left-radius: 1.2rem;
     border-top-right-radius: 1.2rem;
+    margin-bottom: 0.9rem;
 }
 
 .oc-mob-checkout-overlay-title{
@@ -158,13 +159,13 @@
 }
 
 .oc-mob-checkout-overlay-container-list{
-    width: 90%;
+    width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     overflow-x: hidden;
-    
+    overflow-y: hidden;
     border-bottom: 1px solid #ccc;
     padding: 1rem;
 }
