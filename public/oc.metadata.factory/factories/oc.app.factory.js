@@ -15,6 +15,16 @@ const MetaDataCollection = Backbone.Collection.extend({
 
     sync: function (method, collection, options) {
         options = options || {};
+
+        let token = sessionStorage.getItem('sessionToken');
+
+        if(token !== null){
+            options.headers = {
+                ...options.headers,
+                Authorization: token ? `Bearer ${token}` : undefined,
+            };
+        }
+       
         options.contentType = "application/json";
         return Backbone.sync.call(this, method, collection, options);
     }

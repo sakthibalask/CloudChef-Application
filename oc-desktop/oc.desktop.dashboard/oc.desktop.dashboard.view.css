@@ -1,0 +1,588 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.oc-desk-dashboard-view{
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.oc-desk-dashboard-view-sidebar{
+    position: fixed;
+    width: 260px;
+    background-color: #1b1d22;
+    color: #ffffff;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.oc-desk-dashboard-logo{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    background-color: #1b1d22;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.oc-desk-dashboard-logo h2{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+
+}
+
+.oc-desk-dashboard-logo img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.oc-desk-dashboard-menu-items{
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.oc-desk-dashboard-sidedrop{
+    display: none;
+    visibility: hidden;
+}
+
+.oc-desk-dashboard-sidedrop.is-open{
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem; 
+    visibility: visible;
+}
+
+.oc-desk-dashboard-menu-items li,
+.oc-desk-dashboard-sidedrop li{
+    width: 100%;
+    height: 40px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.oc-desk-dashboard-menu-items li>i,
+.oc-desk-dashboard-sidedrop li>i{
+    margin-right: 12px;
+}
+
+.oc-desk-dashboard-menu-items li:hover{
+    background-color: #FFBF00;
+    color: #1b1d22;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+}
+
+
+.oc-desk-dashboard-menu-items li.active{
+   background-color: #FFBF00;
+   color: #1b1d22;
+   border-radius: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.2rem;
+}
+
+#menu-options, 
+#employee-options{
+    cursor: pointer;
+}
+
+.oc-desk-dashboard-view-main{
+    width: calc(100% - 260px);
+    height: 100vh;
+    margin: 0 260px;
+    overflow-x: hidden;
+}
+
+.oc-desk-dashboard-view-header{
+    width: 100%;
+    height: 60px;
+    background-color: #1b1d22;
+    color: #ffffff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.oc-desk-dashboard-view-header-input-grp{
+    width: 20%;
+    height: 35px;
+    background-color: #ffffff;
+    color: #1b1d22;
+    border-radius: 10px;
+}
+
+.oc-desk-dashboard-view-header-input-grp input{
+    width: 100%;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+}
+
+.oc-desk-dashboard-view-header-btn-grp{
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.oc-desk-dashboard-view-header-btn-grp span{
+    position: relative;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.oc-desk-dashboard-view-header-btn-grp span.oc-desk-dashboard-view-header-btn-notify::after{
+    position: absolute;
+    content: "1";
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: #FFBF00;
+    color: #1b1d22;
+    top: 0;
+    left: 65%;
+}
+
+.oc-desk-dashboard-view-header-btn-grp span.oc-desk-dashboard-view-header-btn-message::after{
+    position: absolute;
+    content: "1";
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: #FFBF00;
+    color: #1b1d22;
+    top: 0;
+    left: 90%;
+}
+
+.oc-desk-dashboard-view-content{
+    width: auto;
+    height: 100px;
+    padding: 1rem;
+    margin: 40px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.oc-desk-dashboard-view-content-grid{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    margin-bottom: 6rem;
+    
+}
+
+.oc-desk-dashboard-view-content-grid-item{
+    width: 250px;
+    height: auto;
+    padding: 0.7rem;
+    background-color: #1b1d22;
+    color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.oc-desk-dashboard-view-content-grid-item-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+
+.oc-desk-dashboard-view-content-grid-item-header .left{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+}
+
+.oc-desk-dashboard-view-content-grid-item-header .right span.increment-type{
+    font-size: 1.5rem;
+    color: #2ecc71;
+}
+.oc-desk-dashboard-view-content-grid-item-header .right span.decrement-type{
+    font-size: 1.5rem;
+    color: #e43b4f;
+}
+
+.oc-desk-dashboard-view-content-grid-item-header .right span.normal-type{
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.oc-desk-dashboard-view-content-grid-item-content{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.oc-desk-dashboard-view-content-grid-item-meter{
+    display: block;
+    width: 100%;
+    height: 15px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    margin-bottom: 0.5rem;
+}
+
+.oc-desk-dashboard-view-content-grid-item-meter-value{
+    display: block;
+    height: 15px;
+    background-color: #245af9;
+    border-radius: 20px;
+}
+
+.oc-desk-dashboard-view-content-grid-item-metervalue{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.oc-desk-dashboard-view-content-board{
+    width: 100%;
+    background-color: #1b1d22;
+    border-radius: 20px;
+}
+
+.oc-desk-dashboard-view-content-board-table{
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+    border-radius: 20px;
+}
+
+.oc-desk-dashboard-view-content-board-table thead tr{
+    border-bottom: 1px solid #ccc;
+}
+
+.oc-desk-dashboard-view-content-board-table thead td{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: #1b1d22;
+    text-align: start;
+    padding: 1rem;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.oc-desk-dashboard-view-content-board-table tbody tr td{
+    color: #ffffff;
+}
+
+.oc-desk-dashboard-view-content-board-table-rowdetails .numbers div,
+.oc-desk-dashboard-view-content-board-table-rowdetails .orders div,
+.oc-desk-dashboard-view-content-board-table-rowdetails .tables div,
+.oc-desk-dashboard-view-content-board-table-rowdetails .status div,
+.oc-desk-dashboard-view-content-board-table-rowdetails .staffs div{
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+    font-size: 0.8rem;
+}
+
+.oc-desk-dashboard-view-content-board-table-rowdetails .status div span.on-going{
+    width: max-content;
+    padding: 0.5rem;
+    height: auto;
+    border-radius: 20px;
+    background-color: #2ecc71;
+    color: #ffffff;
+}
+
+tr.view-more{
+    display: none;
+   margin-bottom: 2.5rem;
+}
+
+.view-all-btn{
+    display: none;
+    position: absolute;
+    top: 90%;
+    left: 55%;
+    cursor: pointer;
+    color: #ccc;
+}
+
+
+.logout-container{
+    width: 90%;
+    height: 50px;
+    position: absolute;
+    top: 90%;
+    left: 10%;
+    border-radius: 10px;
+}
+
+.dashboard-logout-btn{
+    width: 90%;
+    height: 50px;
+    background-color: #e43b4f;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.oc-desk-menu-container{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.oc-desk-menu-container-item{
+    width: max-content;
+    height: auto;
+    background-color: #1b1d22;
+    color: #f7f7f7;
+    border-radius: 20px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.oc-desk-menu-container-item-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.oc-desk-menu-container-itemImg{
+    width: 135px;
+    height: 135px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+.oc-desk-menu-container-itemImg img{
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.oc-desk-menu-container-context{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.oc-desk-menu-container-item-footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.7rem;
+}
+
+.oc-desk-menu-container-item-footer button{
+    width: 80%;
+    height: 40px;
+    color: #f7f7f7;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.oc-desk-menu-container-item-footer button.oc-desk-menu-container-item-footer-viewbtn{
+    background-color: #2ecc71;
+   
+}
+
+.oc-desk-menu-container-item-footer button.oc-desk-menu-container-item-footer-deletebtn{
+    background-color: #e43b4f;
+}
+
+.oc-desk-menu-overlay{
+    position: fixed;
+    top: 8%;
+    right: 0.5%;
+    z-index: 100;
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    background-color: #1b1d22;
+    color: #f7f7f7;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s linear;
+    transform: translateX(100%);
+    border-radius: 20px;    
+}
+
+.oc-desk-menu-overlay.is-open{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.oc-desk-menu-overlay-container{
+    padding: 1rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.oc-desk-menu-overlay-container-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.oc-desk-menu-overlay-container-header span.oc-desk-menu-overlay-container-header-heading{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.oc-desk-menu-overlay-container-header span#close-overlay{
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    color: #1b1d22;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.oc-desk-menu-overlay-container-item-context{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 1.1rem;
+}
+
+.oc-desk-menu-overlay-container-item-contex-grp{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.oc-desk-menu-overlay-container-item-contex-grp>input{
+    width: 100%;
+    height: 40px;
+    padding: 0.5rem;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 10px ;
+}
+
+.oc-desk-menu-overlay-container-item-contex-grp>input:disabled{
+    opacity: 0.5;
+    color: #f7f7f7;
+    cursor: not-allowed;
+}
+
+.oc-desk-menu-overlay-container-item-footer{
+    width: 100%;
+    height: 40px;
+}
+
+.oc-desk-menu-overlay-container-item-footer>button{
+    width: 100%;
+    height: 40px;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    background-color: #245af9;
+    color: #f7f7f7;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.oc-desk-menu-container-additem{
+    width: auto;
+    height: auto;
+    background-color: #f7f7f7;
+    border: 1px dashed #1b1d22;
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+
+.oc-desk-menu-container-additem-btn{
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: #1b1d22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    cursor: pointer;
+    opacity: 1;
+}

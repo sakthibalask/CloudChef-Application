@@ -25,15 +25,10 @@ async function showLoadingIndicator(){
     }
 }
 
-function initializeDesktopNavigation() {
-    const desktopContainer = document.querySelector('.oc-desktop-app-body');
-    
-}
 
 async function loadDesktopInitialPage() {
     const sessionToken = sessionStorage.getItem('sessionToken');
     const DesktopMainScreen = document.querySelector('.oc-desktop-main-screen');
-    console.log(sessionToken);
     if(sessionToken === null){
         const currentUrl = new URL(window.location.href);
         const targetId = "authenticate";
@@ -41,21 +36,26 @@ async function loadDesktopInitialPage() {
         window.history.pushState({ targetId }, '', currentUrl.toString());
         loadDesktopLoginPage();
     }else{
+        const currentUrl = new URL(window.location.href);
+        let dynamicTargetId = currentUrl.toString().split("#")[1];
         try{
-            const response = await fetch('./oc.desktop.orders/oc.desktop.orders.view.html');
+            const response = await fetch(`./oc.desktop.${dynamicTargetId}/oc.desktop.${dynamicTargetId}.view.html`);
 
             const initailDesktopPage = await response.text();
 
             if(initailDesktopPage){
                 DesktopMainScreen.innerHTML = initailDesktopPage;
-                loadCSS('./oc.desktop.orders/oc.desktop.orders.view.css');
-                loadJS('./oc.desktop.orders/oc.desktop.orders.view.js');
+                loadCSS(`./oc.desktop.${dynamicTargetId}/oc.desktop.${dynamicTargetId}.view.css`);
+                loadJS(`./oc.desktop.${dynamicTargetId}/oc.desktop.${dynamicTargetId}.view.js`);
                 const currentUrl = new URL(window.location.href);
 
-                if(currentUrl.hash !== 'orders'){
-                    const targetId = "orders";
+                
+                if(currentUrl.hash !== '#orders' && currentUrl.hash !== '#dashboard'){
+                    const targetId = "authenticate";
                     currentUrl.hash = `#${targetId}`;
                     window.history.pushState({ targetId }, '', currentUrl.toString());
+                    sessionStorage.removeItem('sessionToken');
+                    loadDesktopLoginPage();
                 }
             } 
         }catch(err){
@@ -107,6 +107,7 @@ function loadJS(src) {
             const script = document.createElement('script');
             script.src = src;
             script.setAttribute('data-dynamic', 'true');
+            script.setAttribute('type', 'module'); 
             script.onload = resolve;
             script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
             document.body.appendChild(script);

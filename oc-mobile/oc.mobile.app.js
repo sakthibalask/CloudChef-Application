@@ -9,8 +9,8 @@ window.onload = function () {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    initializeNavigation();
     loadInitialPage();
+    initializeNavigation();
 });
 
 function initializeNavigation() {
@@ -21,21 +21,34 @@ function initializeNavigation() {
         link.addEventListener('click', async (event) => {
             event.preventDefault();
             const targetUrl = event.target.closest('a').getAttribute('href').substring(1);
-
-            // Extract and clean the targetId (removes query params if any)
-            const [targetId] = targetUrl.split('?'); // Ignore query params
+            const [targetId] = targetUrl.split('?');
             const currentUrl = new URL(window.location.href);
-            currentUrl.hash = `#${targetId}`; // Set only the hash
-            currentUrl.search = ''; // Remove any existing query parameters
+            currentUrl.hash = `#${targetId}`;
+            currentUrl.search = '';
             window.history.pushState({ targetId }, '', currentUrl.toString());
 
             try {
                 await loadContent(targetId, mainContent);
+                refreshScreen();
             } catch (error) {
                 handleError(error, mainContent);
             }
         });
     });
+}
+
+async function refreshScreen() {
+    const mainContent = document.querySelector('.oc-mob-page-area');
+    const currentUrl = new URL(window.location.href);
+    let targetId = currentUrl.hash.substring(1).split('?')[0];
+    targetId = targetId || 'menu';
+
+    try {
+        await loadContent(targetId, mainContent);
+        console.log(`Screen refreshed for targetId: ${targetId}`);
+    } catch (error) {
+        handleError(error, mainContent);
+    }
 }
 
 async function showLoadingIndicator(container) {
@@ -52,10 +65,10 @@ async function loadContent(targetId, container) {
     try {
         cleanupPageResources();
 
-        // Fetch the content
         const currentUrl = new URL(window.location.href);
         currentUrl.hash = `#${targetId}`;
         window.history.pushState({ targetId }, '', currentUrl.toString());
+
         const response = await fetch(`./oc.mobile.${targetId}/oc.mobile.${targetId}.view.html`);
         if (!response.ok) {
             throw new Error(`Could not load ${targetId}.html`);
@@ -63,22 +76,19 @@ async function loadContent(targetId, container) {
 
         const html = await response.text();
         container.innerHTML = html;
+
+        await loadJS(`./oc.mobile.${targetId}/oc.mobile.${targetId}.view.js`, true);
         loadCSS(`./oc.mobile.${targetId}/oc.mobile.${targetId}.view.css`);
-        await loadJS(`./oc.mobile.${targetId}/oc.mobile.${targetId}.view.js`);
     } catch (err) {
         const mainContent = document.querySelector('.oc-mob-page-area');
         const navigationContainer = document.querySelector('.oc-mob-navigation');
-        const currentUrl = new URL(window.location.href);
         const targetId = "error";
-        currentUrl.hash = `#${targetId}`;
-        window.history.pushState({ targetId }, '', currentUrl.toString());
+
         const errorResponse = await fetch('../public/oc-notfound.screen.html');
         const errorScreen = await errorResponse.text();
 
         mainContent.innerHTML = errorScreen;
         navigationContainer.style.display = "none";
-
-
     }
 }
 
@@ -101,19 +111,18 @@ function loadCSS(href) {
     }
 }
 
-function loadJS(src) {
+function loadJS(src, isModule = false) {
     return new Promise((resolve, reject) => {
-        const existingScript = document.querySelector(`script[src="${src}"]`);
-        if (!existingScript) {
-            const script = document.createElement('script');
-            script.src = src;
-            script.setAttribute('data-dynamic', 'true');
-            script.onload = resolve;
-            script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-            document.body.appendChild(script);
-        } else {
-            resolve();
-        }
+        cleanupPageResources(); // Ensures the script is reloaded fresh
+
+        const script = document.createElement('script');
+        script.src = `${src}?timestamp=${Date.now()}`; // Add timestamp to avoid caching issues
+        script.type = isModule ? 'module' : 'text/javascript';
+        script.defer = isModule;
+        script.setAttribute('data-dynamic', 'true');
+        script.onload = resolve;
+        script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+        document.body.appendChild(script);
     });
 }
 
@@ -128,13 +137,13 @@ function handleError(error, container) {
 
 function loadInitialPage() {
     const mainContent = document.querySelector('.oc-mob-page-area');
-    const isReload = performance.navigation.type === 1; // Check if the page was reloaded
+    const isReload = performance.navigation.type === 1;
 
     if (isReload) {
         showLoadingIndicator(mainContent);
         setTimeout(() => {
             continueInitialPageLoad(mainContent);
-        }, 2000); // Display loading screen for 2 seconds on reload
+        }, 2000);
     } else {
         continueInitialPageLoad(mainContent);
     }
@@ -146,16 +155,8 @@ function continueInitialPageLoad(mainContent) {
         loadLoginPage();
     } else {
         const currentUrl = new URL(window.location.href);
-
-        // Extract and clean the targetId (removes query params if any)
-        let targetId = currentUrl.hash.substring(1).split('?')[0]; // Remove query parameters if any
-        if(targetId !== "error"){
-            targetId = targetId  || 'menu';
-        }else{
-            targetId = 'menu';
-        }
-         // Default to 'menu' if no hash or invalid targetId
-
+        let targetId = currentUrl.hash.substring(1).split('?')[0];
+        targetId = targetId !== "error" ? targetId || 'menu' : 'menu';
 
         loadContent(targetId, mainContent).catch(error => {
             handleError(error, mainContent);
@@ -174,21 +175,13 @@ async function loadLoginPage() {
         const loginHtml = await loginPage.text();
         mainBody.innerHTML = loginHtml;
 
-        const loginCSSLink = document.createElement('link');
-        loginCSSLink.rel = 'stylesheet';
-        loginCSSLink.href = '../public/oc-authentication/oc-authentication.view.css';
-        document.body.appendChild(loginCSSLink);
-
-        const loginJSLink = document.createElement('script');
-        loginJSLink.src = '../public/oc-authentication/oc-authentication.view.js';
-        loginJSLink.setAttribute('type', 'module'); 
-        document.body.appendChild(loginJSLink);
-    }, 2000); // Show loading screen for 2 seconds on login
+        await loadJS('../public/oc-authentication/oc-authentication.view.js', true);
+        loadCSS('../public/oc-authentication/oc-authentication.view.css');
+    }, 2000);
 }
 
 window.addEventListener('popstate', (event) => {
-    let targetId = event.state ? event.state.targetId : window.location.hash.substring(1);
-    targetId = targetId.split('?')[0]; // Remove query parameters if any
+    const targetId = event.state ? event.state.targetId : window.location.hash.substring(1).split('?')[0];
     if (targetId) {
         const mainContent = document.querySelector('.oc-mob-page-area');
         loadContent(targetId, mainContent).catch(error => {

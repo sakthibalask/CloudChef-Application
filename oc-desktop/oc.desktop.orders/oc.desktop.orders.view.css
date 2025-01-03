@@ -63,13 +63,6 @@
     cursor: pointer;
 }
 
-.oc-desk-orders-view-container-header-chips span:last-child{
-   display: flex;
-   align-items: center;
-   flex-direction: row;
-   gap: 0.5rem;
-}
-
 .oc-desk-orders-view-container-header-chips span:hover,
 .oc-desk-orders-view-container-header-chips span.active-chips{
     background-color: #FFBF00;
@@ -89,6 +82,20 @@
     align-items: center;
     flex-direction: row;
     gap: 1.1rem;
+}
+
+.oc-desk-orders-view-container-header-actions span{
+    width: max-content;
+    height: 40px;
+    padding: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+    cursor: pointer;
 }
 
 .oc-desk-orders-view-container-header-actions-button{
@@ -411,6 +418,13 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+}
+
+.oc-desk-orderitem-overlay-view-container-item label{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1.2rem;
 }
 
 .oc-desk-orderitem-overlay-view-container-item div{

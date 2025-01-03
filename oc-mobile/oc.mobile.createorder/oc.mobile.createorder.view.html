@@ -1,35 +1,23 @@
 <div class="oc-mob-createorder-view">
     <div class="oc-mob-createorder-view-header">
-        <h2 class="oc-mob-createorder-view-header-title">Create Order</h2>
+        <h2 class="oc-mob-createorder-view-header-title">Current Orders</h2>
+        <span class="oc-mob-createorder-view-header-subtitle" id="create-order"><i class="ri-add-large-line"></i></span>
     </div>
-    <div class="oc-mob-createorder-view-form-container">
-        <div class="oc-mob-createorder-view-form-tabs">
-            <span class="oc-mob-createorder-view-form-tab dine-btn active-tab">Dine In</span>
-            <span class="oc-mob-createorder-view-form-tab takeaway-btn">Take Away</span>
+    <div class="oc-mob-currentorderslist-view">
+        <div class="oc-mob-createorder-view-form-input-grp">
+            <div class="oc-mob-createorder-view-form-input"></div>
         </div>
-        <div class="oc-mob-createorder-view-form">
-            <div class="oc-mob-createorder-view-form-input-grp">
-                <input type="text" class="oc-mob-createorder-view-form-input" value="EMP001"></input>
-            </div>
-            <div class="oc-mob-createorder-view-form-btn-grp">
-                <button class="oc-mob-createorder-view-form-btn" id="oc-table">
-                    <span>Select Table</span>
-                    <span><i class="ri-arrow-right-wide-line"></i></span>
-                </button>
-            </div>
-            <div class="oc-mob-createorder-view-form-btn-grp">
-                <button class="oc-mob-createorder-view-form-btn" id="oc-menu">
-                    <span> View Menu</span>
-                    <span><i class="ri-arrow-right-wide-line"></i></span>
-                </button>
-            </div>
-            <div class="oc-mob-createorder-view-form-btn-grp">
-                <button class="oc-mob-createorder-view-form-btn" id="oc-ordersummary">
-                    <span>Order Summary</span>
-                    <span><i class="ri-arrow-right-wide-line"></i></span>
-                </button>
-            </div>
+        <div class="oc-mob-createorder-view-form-filterChips">
+            <span class="active" id="on-going">On Going</span>
+            <span id="completed">Completed</span>
+        </div>
+        <div class="oc-mob-createorder-view-container">
+            <ul class="oc-mob-createorder-view-lists">
+                <h2>Please Hold On Loading Your Orders...</h2>
+            </ul>
         </div>
     </div>
+    <div class="oc-mob-createorderactions-view-overlay"></div>    
+    <div class="oc-mob-createorderform-view-overlay"></div>    
 </div>
 <div class="oc-mob-createorder-view-overlay"></div>

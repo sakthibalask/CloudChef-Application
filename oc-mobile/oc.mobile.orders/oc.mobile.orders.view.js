@@ -24,7 +24,7 @@ function initializeOrdersPage() {
             table: "Table 5",
             items: 2,
             orderId: "#OC022",
-            status: "TakeAway",
+            status: "In-Progress",
         },
         {
             table: "Table 10",
@@ -286,7 +286,7 @@ function initializeOrdersPage() {
     }
 
     // Populate orders initially with all filters
-    populateOrders('all');
+    populateOrders('in-progress');
 
     // Add event listeners for filter chips
     let filterChips = document.querySelectorAll('.oc-mob-orders-filter-chip');
